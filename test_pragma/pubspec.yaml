@@ -24,6 +24,11 @@ dependencies:
   flutter_svg: ^2.0.15
   #State
   provider: ^6.1.2
+  #Apis
+  dio: ^5.7.0
+  http: ^1.2.2
+  #Image Cache
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
