@@ -1,4 +1,3 @@
-// lib/features/cats/presentation/providers/cat_provider.dart
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:test_pragma/feature/landing/domain/entities/cat.dart';
@@ -13,7 +12,7 @@ class CatProvider extends ChangeNotifier {
       GetIt.instance<SearchCatImagesUseCase>();
   final GetBreedsUseCase getBreedsUseCase = GetIt.instance<GetBreedsUseCase>();
 
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   TextEditingController get searchController => _searchController;
 
   bool _isLoading = false;
@@ -24,38 +23,6 @@ class CatProvider extends ChangeNotifier {
 
   List<Cat> _filteredBreeds = [];
   List<Cat> get filteredBreeds => _filteredBreeds;
-
-  List<Cat> cats = [];
-
-  List<String> catImages = [];
-
-  Future<void> fetchCats(String breed) async {
-    _isLoading = true;
-    notifyListeners();
-    try {
-      cats = await getUserUseCase(breed);
-      debugPrint('Lista total ${cats.length}');
-    } catch (e) {
-      cats = [];
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
-
-  Future<void> searchCatImages() async {
-    _isLoading = true;
-    notifyListeners();
-    try {
-      catImages = await searchCatUseCase.searchCat();
-      debugPrint('Lista total ${cats.length}');
-    } catch (e) {
-      cats = [];
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
 
   Future<void> loadBreeds() async {
     _isLoading = true;
