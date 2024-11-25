@@ -29,6 +29,8 @@ dependencies:
   http: ^1.2.2
   #Image Cache
   cached_network_image: ^3.4.1
+  #link
+  easy_url_launcher: ^0.0.7
 
 dev_dependencies:
   flutter_test:

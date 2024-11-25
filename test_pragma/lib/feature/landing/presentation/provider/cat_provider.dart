@@ -4,12 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:test_pragma/app/routes/routes_enum.dart';
 import 'package:test_pragma/feature/landing/domain/entities/cat.dart';
 import 'package:test_pragma/feature/landing/domain/usescases/get_breeds_use_case.dart';
-import 'package:test_pragma/feature/landing/domain/usescases/get_cats_by_breed_use_case.dart';
 import 'package:test_pragma/feature/landing/domain/usescases/search_cat_images_use_case.dart';
 
 class CatProvider extends ChangeNotifier {
-  final GetCatsByBreedUseCase getUserUseCase =
-      GetIt.instance<GetCatsByBreedUseCase>();
   final SearchCatImagesUseCase searchCatUseCase =
       GetIt.instance<SearchCatImagesUseCase>();
   final GetBreedsUseCase getBreedsUseCase = GetIt.instance<GetBreedsUseCase>();

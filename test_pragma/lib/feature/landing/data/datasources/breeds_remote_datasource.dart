@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:test_pragma/app/network/dio/dio_client.dart';
 import 'package:test_pragma/app/network/dio/dio_exception.dart';
 import 'package:test_pragma/feature/landing/data/models/response_breeds.dart';
+import 'package:test_pragma/global/utils/constants.dart';
 
 abstract class BreedsRemoteDataSource {
   Future<List<ResponseBreeds>> getBreeds();
@@ -14,8 +15,8 @@ class BreedsRemoteDataSourceImpl implements BreedsRemoteDataSource {
   @override
   Future<List<ResponseBreeds>> getBreeds() async {
     try {
-      final response =
-          await DioClient.instance.get('https://api.thecatapi.com/v1/breeds');
+      final response = await DioClient.instance
+          .get('${Constants.urlBaseApi}${Constants.breeds}');
       if (response.statusCode == 200) {
         List<ResponseBreeds> breeds = (response.data as List)
             .map((breedJson) => ResponseBreeds.fromJson(breedJson))
@@ -23,7 +24,7 @@ class BreedsRemoteDataSourceImpl implements BreedsRemoteDataSource {
 
         return breeds;
       } else {
-        throw Exception('Error al cargar los gatos');
+        throw Exception(Constants.errorUpload);
       }
     } on DioException catch (e) {
       var error = DioExceptionError.fromDioError(e);

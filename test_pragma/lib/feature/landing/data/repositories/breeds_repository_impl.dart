@@ -19,6 +19,10 @@ class BreedsRepositoryImpl implements BreedsRepository {
               imageUrl:
                   'https://cdn2.thecatapi.com/images/${cat.referenceImageId}.jpg',
               description: cat.description,
+              wikipediaUrl: cat.wikipediaUrl,
+              energyLevel: cat.energyLevel,
+              lifeSpan: cat.lifeSpan,
+              temperament: cat.temperament,
             ))
         .toList();
   }

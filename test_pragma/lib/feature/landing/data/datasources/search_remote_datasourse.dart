@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:test_pragma/app/network/dio/dio_client.dart';
 import 'package:test_pragma/app/network/dio/dio_exception.dart';
-import 'package:test_pragma/feature/landing/data/models/cat_model.dart';
 
 abstract class SearchCatRemoteDataSource {
   Future<List<String>> searchCatsImages();

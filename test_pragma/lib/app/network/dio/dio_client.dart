@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:test_pragma/app/network/dio/paths.dart';
+import 'package:test_pragma/global/utils/constants.dart';
 
-/// Create a singleton class to contain all Dio methods and helper functions
 class DioClient {
   DioClient._();
 
@@ -9,14 +9,13 @@ class DioClient {
 
   final Dio _dio = Dio(BaseOptions(
       headers: {
-        'x-api-key':
-            'ADUu1a2menRK2yvhRBsxv8eheEFZhs9XcNVxMfDDCGNAGGbyT0aWDAFPAZuA3Aoz', // Header de autorización
-        'Content-Type': 'application/json', // Tipo de contenido
-        'Accept': 'application/json', // Formato aceptado
+        'x-api-key': Constants.xApiKey, // Header de autorización
+        'Content-Type': Constants.contentType, // Tipo de contenido
+        'Accept': Constants.accept, // Formato aceptado
       },
       baseUrl: baseUrl,
-      connectTimeout: const Duration(seconds: 60),
-      receiveTimeout: const Duration(seconds: 60),
+      connectTimeout: const Duration(seconds: Constants.connectTimeout),
+      receiveTimeout: const Duration(seconds: Constants.receiveTimeout),
       responseType: ResponseType.json));
 
   ///Get Method
