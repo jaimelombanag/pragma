@@ -16,7 +16,7 @@ class GetCatsRemoteDataSourceImpl implements GetCatsRemoteDataSource {
   Future<List<ResponseCats>> getCats() async {
     try {
       var url =
-          '${Constants.urlBaseApi}images/${Constants.search}?has_breeds=true&limit=10';
+          '${Constants.urlBaseApi}images/${Constants.search}?has_breeds=true&limit=100';
       debugPrint('ApiUrl: $url');
       final response = await DioClient.instance.get(url);
       if (response.statusCode == 200) {
