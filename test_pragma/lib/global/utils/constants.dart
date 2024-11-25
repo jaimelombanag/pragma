@@ -14,6 +14,7 @@ abstract class Constants {
 
   //metodos Api
   static const breeds = 'breeds';
+  static const search = 'search';
 
   //Dio
   static const contentType = 'application/json';
