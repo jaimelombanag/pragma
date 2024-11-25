@@ -2,6 +2,8 @@ abstract class Constants {
   static const titleSplash = "Cat World";
   static const titleSearch = "Buscar razas de gatos";
   static const labelSearch = 'Buscar raza';
+  static const labelTab1 = 'Razas';
+  static const labelTab2 = 'Gatos';
 
   static const urlBaseApi = 'https://api.thecatapi.com/v1/';
   //Key Personal

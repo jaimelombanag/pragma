@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_pragma/feature/landing/domain/entities/cat.dart';
-import 'package:test_pragma/feature/landing/presentation/provider/cat_provider.dart';
+import 'package:test_pragma/feature/landing/presentation/provider/cat_breeds_provider.dart';
 import 'package:test_pragma/global/utils/constants.dart';
 
 // ignore: must_be_immutable
@@ -18,7 +18,7 @@ class ItemCatCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Provider.of<CatProvider>(context, listen: false)
+        Provider.of<CatBreedsProvider>(context, listen: false)
             .goDetail(breed, context);
       },
       child: Card(
