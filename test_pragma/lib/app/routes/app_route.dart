@@ -27,9 +27,8 @@ GoRouter goRouter() {
         path: '/detail',
         name: Routes.detail.name,
         builder: (context, state) {
-          return DetailsPage(
-            cat: Cat(),
-          );
+          final Cat cat = state.extra as Cat; // Conversión directa
+          return DetailsPage(cat: cat);
         },
       ),
     ],

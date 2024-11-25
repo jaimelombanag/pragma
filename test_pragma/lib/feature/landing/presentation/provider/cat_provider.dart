@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:go_router/go_router.dart';
+import 'package:test_pragma/app/routes/routes_enum.dart';
 import 'package:test_pragma/feature/landing/domain/entities/cat.dart';
 import 'package:test_pragma/feature/landing/domain/usescases/get_breeds_use_case.dart';
 import 'package:test_pragma/feature/landing/domain/usescases/get_cats_by_breed_use_case.dart';
@@ -46,6 +48,13 @@ class CatProvider extends ChangeNotifier {
         .where((breed) => breed.name!.toLowerCase().contains(query))
         .toList();
     notifyListeners();
+  }
+
+  void goDetail(Cat cat, BuildContext ctx) {
+    ctx.pushNamed(
+      Routes.detail.name,
+      extra: cat,
+    );
   }
 
   @override
