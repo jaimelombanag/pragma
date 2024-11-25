@@ -3,10 +3,10 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:test_pragma/app/routes/routes_enum.dart';
 import 'package:test_pragma/feature/landing/domain/entities/cat.dart';
-import 'package:test_pragma/feature/landing/domain/usescases/get_cat_use_case.dart';
+import 'package:test_pragma/feature/landing/domain/usescases/get_breeds_use_case.dart';
 
-class CatsProvider extends ChangeNotifier {
-  final GetCatUseCase getCatsUseCase = GetIt.instance<GetCatUseCase>();
+class CatBreedsProvider extends ChangeNotifier {
+  final GetBreedsUseCase getBreedsUseCase = GetIt.instance<GetBreedsUseCase>();
 
   final TextEditingController _searchController = TextEditingController();
   TextEditingController get searchController => _searchController;
@@ -14,21 +14,34 @@ class CatsProvider extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  List<Cat> _cats = [];
-  List<Cat> get cats => _cats;
+  List<Cat> _breeds = [];
+  List<Cat> get breeds => _breeds;
 
-  Future<void> loadCats() async {
+  List<Cat> _filteredBreeds = [];
+  List<Cat> get filteredBreeds => _filteredBreeds;
+
+  Future<void> loadBreeds() async {
     _isLoading = true;
     notifyListeners();
     try {
-      _cats = await getCatsUseCase.getCats();
+      _breeds = await getBreedsUseCase.call();
+      _filteredBreeds = _breeds;
+      _searchController.addListener(_filterBreeds);
       notifyListeners();
     } catch (e) {
-      _cats = [];
+      _breeds = [];
     } finally {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  void _filterBreeds() {
+    final query = _searchController.text.toLowerCase();
+    _filteredBreeds = _breeds
+        .where((breed) => breed.name!.toLowerCase().contains(query))
+        .toList();
+    notifyListeners();
   }
 
   void goDetail(Cat cat, BuildContext ctx) {
